@@ -1,0 +1,15 @@
+# Disable Directory listing
+Options -Indexes
+
+# Block direct access to sensitive files
+<FilesMatch "\.(env|json|config.js|md|gitignore|gitattributes|lock)$">
+    Require all denied
+</FilesMatch>
+
+# ============================
+# Force specific PDFs to download
+# ============================
+<FilesMatch "^(privacy-policy|Terms-and-Condition)\.pdf$">
+    ForceType application/octet-stream
+    Header set Content-Disposition attachment
+</FilesMatch>
