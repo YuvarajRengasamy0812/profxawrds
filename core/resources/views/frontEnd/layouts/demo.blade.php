@@ -5,7 +5,10 @@
             <div class="col-lg-9 col-md-12 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="venue-info">
                     <strong>Venue:</strong> Le Meridian, Airport Road, Dubai UAE
-                    <span class="venue-date"><strong>Date & Time:</strong> {{ Helper::awardEventDateTime() }}</span>
+                    @php
+                        $awardEventDateTime = Helper::awardEventDateTime();
+                    @endphp
+                    <span class="venue-date"><strong>Date & Time:</strong> {{ $awardEventDateTime }}</span>
                 </div>
             </div>
             <div class="col-lg-3 col-md-12 text-center text-lg-end">

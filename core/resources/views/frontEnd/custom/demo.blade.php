@@ -33,7 +33,7 @@
     <div class="tab-buttons text-center mb-4">
         <button class="tab-btn active" data-title="all">All</button>
         @foreach($titles as $title)
-            <button class="tab-btn" data-title="{{ Str::slug($title) }}">{{ $title }}</button>
+            <button class="tab-btn" data-title="{{ \Illuminate\Support\Str::slug($title) }}">{{ $title }}</button>
         @endforeach
     </div>
 </div>
@@ -54,7 +54,7 @@
                         ? URL::to('uploads/topics/'.$HomePartner->photo_file) 
                         : asset('frontEnd/assets/images/no-image.png');
 
-                    $dataTitle = Str::slug($title);
+                    $dataTitle = \Illuminate\Support\Str::slug($title);
                 @endphp
 
                 <div class="gallery-item" data-title="{{ $dataTitle }}"

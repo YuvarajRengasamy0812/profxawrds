@@ -37,7 +37,7 @@ class Helper
 
     static function awardEventDate(): string
     {
-        return '19th December ' . Helper::awardYear();
+        return '11th December ' . Helper::awardYear();
     }
 
     static function awardEventDateTime(): string
@@ -91,20 +91,18 @@ class Helper
 
     static function GeneralWebmasterSettings($var)
     {
-        $_Loader_WebmasterSettings = session('_Loader_WebmasterSettings', []);
+        static $_Loader_WebmasterSettings = null;
         if (empty($_Loader_WebmasterSettings)) {
             $_Loader_WebmasterSettings = WebmasterSetting::find(1);
-            session(['_Loader_WebmasterSettings' => $_Loader_WebmasterSettings]);
         }
         return @$_Loader_WebmasterSettings->$var;
     }
 
     static function GeneralSiteSettings($var)
     {
-        $_Loader_Web_Settings = session('_Loader_Web_Settings', []);
+        static $_Loader_Web_Settings = null;
         if (empty($_Loader_Web_Settings)) {
             $_Loader_Web_Settings = Setting::find(1);
-            session(['_Loader_Web_Settings' => $_Loader_Web_Settings]);
         }
         return @$_Loader_Web_Settings->$var;
     }
@@ -636,10 +634,9 @@ class Helper
         if (session('locale', '') != "") {
             $locale = Session('locale');
         }
-        $_Loader_Languages = session('_Loader_Languages', []);
+        static $_Loader_Languages = null;
         if (empty($_Loader_Languages)) {
             $_Loader_Languages = Language::all();
-            session(['_Loader_Languages' => $_Loader_Languages]);
         }
         $Language = $_Loader_Languages->first(function ($item) use ($locale) {
             return $item->code == $locale;
@@ -657,10 +654,9 @@ class Helper
 
     static function languagesList()
     {
-        $_Loader_Languages = session('_Loader_Languages', []);
+        static $_Loader_Languages = null;
         if (empty($_Loader_Languages)) {
             $_Loader_Languages = Language::all();
-            session(['_Loader_Languages' => $_Loader_Languages]);
         }
         return $_Loader_Languages->where("status", true);
     }
@@ -742,10 +738,9 @@ class Helper
             }
             $title_var = "title_" . $lang;
             if (empty($WebmasterSection)) {
-                $_Loader_WebmasterSections = session('_Loader_WebmasterSections', []);
+                static $_Loader_WebmasterSections = null;
                 if (empty($_Loader_WebmasterSections)) {
                     $_Loader_WebmasterSections = WebmasterSection::all();
-                    session(['_Loader_WebmasterSections' => $_Loader_WebmasterSections]);
                 }
                 $WebmasterSection = $_Loader_WebmasterSections->first(function ($item) use ($id) {
                     return $item->id == $id;

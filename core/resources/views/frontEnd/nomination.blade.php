@@ -3,6 +3,9 @@
 @extends('frontEnd.layouts.profx')
 
 @section('content')
+@php
+    $awardEventDateTime = Helper::awardEventDateTime();
+@endphp
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="nomination-page">
@@ -223,7 +226,7 @@
             <div class="nomination-agenda-header">
                 <span class="agenda-kicker">Our Agenda</span>
                 <h2>PROFX Awards Program Agenda</h2>
-                <p>{{ Helper::awardEventDateTime() }}</p>
+                <p>{{ $awardEventDateTime }}</p>
             </div>
 
             <div class="nomination-roadmap">

@@ -1,6 +1,9 @@
 @extends('frontEnd.layouts.profx')
 
 @section('content')
+@php
+    $awardEventDateTime = Helper::awardEventDateTime();
+@endphp
 <div class="gallery-page">
     <!-- Hero Section -->
     <div class="hero-sections">
@@ -10,7 +13,7 @@
                 <h1 class="mt-5">Gallery</h1>
                 <p>Explore moments from PROFX Awards, industry networking, recognition, and celebration.</p>
                 <div class="gallery-hero-meta">
-                    <span>{{ Helper::awardEventDateTime() }}</span>
+                    <span>{{ $awardEventDateTime }}</span>
                     <span>Dubai, UAE</span>
                 </div>
             </div>
@@ -39,7 +42,7 @@
             $title = trim($item->$title_var ?: $item->$title_var2 ?: 'Untitled');
 
             // create slug; if empty fallback to 'untitled'
-            $slug = Str::slug($title);
+            $slug = \Illuminate\Support\Str::slug($title);
             if (empty($slug)) {
                 $slug = 'untitled';
             }
@@ -111,7 +114,7 @@
                                 ? URL::to('uploads/topics/' . $HomePartner->photo_file)
                                 : asset('frontEnd/assets/images/no-image.png');
 
-                            $dataTitle = Str::slug($title);
+                            $dataTitle = \Illuminate\Support\Str::slug($title);
                             if (empty($dataTitle)) {
                                 $dataTitle = 'untitled';
                             }

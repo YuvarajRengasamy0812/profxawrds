@@ -508,6 +508,42 @@ body,
 	background: #000915 !important;
 }
 
+.video-hero {
+	position: relative !important;
+	isolation: isolate;
+	background: #000915;
+	min-height: 100vh;
+	overflow: hidden;
+}
+
+.video-hero .video-background {
+	position: absolute !important;
+	inset: 0;
+	top: 0 !important;
+	left: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	min-width: 100% !important;
+	min-height: 100% !important;
+	transform: none !important;
+	object-fit: cover !important;
+	z-index: 0 !important;
+	display: block !important;
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+.video-hero .video-overlay {
+	z-index: 1 !important;
+	pointer-events: none;
+}
+
+.video-hero .hero-content,
+.video-hero .scroll-indicator {
+	position: relative;
+	z-index: 2 !important;
+}
+
 .area-bg#agendarecap .document-area {
 	margin-bottom: 0 !important;
 	padding-bottom: 70px;
