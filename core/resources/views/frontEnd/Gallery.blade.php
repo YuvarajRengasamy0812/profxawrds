@@ -1,11 +1,21 @@
 @extends('frontEnd.layouts.profx')
 
 @section('content')
+<div class="gallery-page">
     <!-- Hero Section -->
     <div class="hero-sections">
         <div class="trophies-container">
             <div class="award-text">
+                <span class="gallery-hero-kicker">PROFX Awards {{ Helper::awardYear() }}</span>
                 <h1 class="mt-5">Gallery</h1>
+                <p>Explore moments from PROFX Awards, industry networking, recognition, and celebration.</p>
+                <div class="gallery-hero-meta">
+                    <span>{{ Helper::awardEventDateTime() }}</span>
+                    <span>Dubai, UAE</span>
+                </div>
+            </div>
+            <div class="gallery-hero-visual">
+                <img src="{{ asset(Helper::awardLogoAsset()) }}" alt="PROFX Awards {{ Helper::awardYear() }}">
             </div>
         </div>
     </div>
@@ -86,7 +96,7 @@
       cursor: pointer;
     }
         </style>
-        <section id="partners" class="gallery py-5" style="background-color: #fff;">
+        <section id="partners" class="gallery gallery-section py-5">
             <div class="container">
                 <div class="gallery-grid"
                     style="display: grid; gap: 20px;">
@@ -325,6 +335,7 @@
             });
         </script>
     @endif
+</div>
 @endsection
 
 @push('scripts')

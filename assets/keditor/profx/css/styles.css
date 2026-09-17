@@ -2057,6 +2057,37 @@ label {
 	background-image: url(../img/bg/area_bg.png);
 	background-size: cover;
 	background-position: center;
+	position: relative;
+	background-color: #010913;
+}
+.area-bg#agendarecap::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(90deg, rgba(0, 8, 17, .92) 0%, rgba(0, 12, 25, .82) 48%, rgba(1, 12, 24, .88) 100%),
+		linear-gradient(180deg, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, .12) 35%, rgba(0, 0, 0, .68) 100%);
+	pointer-events: none;
+	z-index: 0;
+}
+.area-bg#agendarecap > section {
+	position: relative;
+	z-index: 1;
+}
+.area-bg#agendarecap .roadmap-area::before {
+	background: linear-gradient(180deg, rgba(0, 8, 17, .88) 0%, rgba(0, 8, 17, .18) 55%, rgba(0, 8, 17, .7) 100%);
+	opacity: 1;
+}
+.area-bg#agendarecap .document-img img {
+	filter: saturate(1.08) contrast(1.06) drop-shadow(0 24px 40px rgba(0, 0, 0, .55));
+}
+.area-bg#agendarecap .document-content .title {
+	color: #fff;
+	text-shadow: 0 4px 18px rgba(0, 0, 0, .35);
+}
+.area-bg#agendarecap .btn-nominate {
+	box-shadow: 0 12px 24px rgba(0, 0, 0, .25);
+	text-decoration: none !important;
 }
 .document-content .document-list {
 	margin-bottom: 40px;
@@ -3428,9 +3459,9 @@ label {
 }
 .bt-roadmap-item {
 	display: flex;
-	width: 370px;
+	width: 385px;
 	flex: 0 0 auto;
-	height: 305px;
+	height: 340px;
 	align-self: flex-end;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -3455,7 +3486,7 @@ label {
 	bottom: 0;
 }
 .bt-roadmap-item:not(:first-child) {
-	margin-left: -155px;
+	margin-left: -135px;
 }
 .bt-roadmap-item:last-child {
 	width: 280px;

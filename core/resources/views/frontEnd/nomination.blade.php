@@ -5,6 +5,7 @@
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<div class="nomination-page">
 <div class="hero-section">
     <div class="trophies-container">
        
@@ -16,8 +17,6 @@
         </div>
         </div>
     </div>
-  
-</div>
 
 @if(session('success'))
 <script>
@@ -219,94 +218,58 @@
         </div>
     </section>
 
-     <section id="roadmap" class="roadmap-area pt-130 pb-130">
-                    <div class="container custom-container-two">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-5 col-lg-8">
-                                <div class="section-title text-center mb-60">
-                                    <span class="section-title-span"></span>Our Agenda<span class="section-title-span"></span>
-                                    <h2 class="title"> <span style="color: #d4af37;">PROFX Awards</span>  Program Agenda  </h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="bt-roadmap_x">
-                                    <div class="bt-roadmap-wrap">
-                                        <div class="bt-roadmap-item">
-                                            <span class="roadmap-title">6:00 PM</span>
-                                            <div class="roadmap-content">
-                                                <span class="dot"></span>
-                                                <h4 class="title">Opening Cermony</h4>
-                                                <span>Anchor Speech ProFx Into & Teaser</span>
-                                                <span>Trophy Launch</span>
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="bt-roadmap-item">
-                                            <span class="roadmap-title">6:15 PM</span>
-                                            <div class="roadmap-content">
-                                                <span class="dot"></span>
-                                                <h4 class="title">Speaker Speech</h4>
-                                                <span>Panel Speaker 1</span>
-                                                <span>Panel Speaker 2</span>
-                                                <span>Panel Speaker 3</span>
-                                            </div>
-                                        </div>
-                                        <div class="bt-roadmap-item">
-                                            <span class="roadmap-title">6:45 PM</span>
-                                            <div class="roadmap-content">
-                                                <span class="dot"></span>
-                                                <h4 class="title">Hi Tea & Entertainment</h4>
-                                                <span>Lunch</span>
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="bt-roadmap-item">
-                                            <span class="roadmap-title">7:00 Pm</span>
-                                            <div class="roadmap-content">
-                                                <span class="dot"></span>
-                                                <h4 class="title">Award Distribution</h4>
-                                                <span>30 Awards Distribution</span>
-                                              
-                                            </div>
-                                        </div>
-                                        <div class="bt-roadmap-item">
-                                            <span class="roadmap-title">8:00 PM</span>
-                                            <div class="roadmap-content">
-                                                <span class="dot"></span>
-                                                <h4 class="title">Entertainment Show</h4>
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="bt-roadmap-item">
-                                            <span class="roadmap-title">8:15 PM</span>
-                                            <div class="roadmap-content">
-                                                <span class="dot"></span>
-                                                <h4 class="title">Speaker Speech</h4>
-                                                <span>Panel Speaker 4</span>
-                                                <span>Panel Speaker 5</span>
-                                                <span>Panel Speaker 6</span>
-                                            </div>
-                                        </div>
-                                        <div class="bt-roadmap-item">
-                                            <span class="roadmap-title">8:45 PM - 10:00 PM</span>
-                                            <div class="roadmap-content">
-                                                <span class="dot"></span>
-                                                <h4 class="title">Entertainment Show30 Awards Distribution</h4>
-                                               
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+     <section id="roadmap" class="nomination-agenda">
+        <div class="container">
+            <div class="nomination-agenda-header">
+                <span class="agenda-kicker">Our Agenda</span>
+                <h2>PROFX Awards Program Agenda</h2>
+                <p>{{ Helper::awardEventDateTime() }}</p>
+            </div>
+
+            <div class="nomination-roadmap">
+                <article class="nomination-roadmap-card">
+                    <span class="nomination-roadmap-time">6:00 PM</span>
+                    <h3>Opening Ceremony</h3>
+                    <p>Welcome address, PROFX intro teaser, trophy launch, and ceremony opening.</p>
+                </article>
+                <article class="nomination-roadmap-card">
+                    <span class="nomination-roadmap-time">6:15 PM</span>
+                    <h3>Speaker Session</h3>
+                    <p>Industry speakers and panel insights from invited market leaders.</p>
+                </article>
+                <article class="nomination-roadmap-card">
+                    <span class="nomination-roadmap-time">6:45 PM</span>
+                    <h3>Hi Tea & Networking</h3>
+                    <p>Refreshments, guest interaction, and networking with nominees and partners.</p>
+                </article>
+                <article class="nomination-roadmap-card">
+                    <span class="nomination-roadmap-time">7:00 PM</span>
+                    <h3>Award Distribution</h3>
+                    <p>Recognition of award categories, finalists, winners, and brand achievements.</p>
+                </article>
+                <article class="nomination-roadmap-card">
+                    <span class="nomination-roadmap-time">8:00 PM</span>
+                    <h3>Entertainment Show</h3>
+                    <p>Live entertainment and celebration moments throughout the awards evening.</p>
+                </article>
+                <article class="nomination-roadmap-card">
+                    <span class="nomination-roadmap-time">8:15 PM</span>
+                    <h3>Speaker Session</h3>
+                    <p>Additional speaker sessions and industry reflections from senior guests.</p>
+                </article>
+                <article class="nomination-roadmap-card">
+                    <span class="nomination-roadmap-time">8:45 PM - 11:00 PM</span>
+                    <h3>Awards, Dinner & Celebration</h3>
+                    <p>Final award presentations, dinner, entertainment, business networking, and closing.</p>
+                </article>
+            </div>
+        </div>
+    </section>
 
   
 
     <div class="divider"></div>
+</div>
     
     <script>
   const subcategories = {

@@ -56,6 +56,27 @@ body {
     color: var(--navy);
 }
 
+a,
+a:hover,
+a:focus,
+a:active,
+.btn,
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn-nominate,
+.btn-nominate:hover,
+.btn-nominate:focus,
+.btn-nominate:active,
+.btn-sponsor,
+.btn-sponsor:hover,
+.btn-hero-sponsor,
+.btn-hero-sponsor:hover,
+.cta-button,
+.cta-button:hover {
+    text-decoration: none !important;
+}
+
 /* ==================== MAIN HEADER ==================== */
 .main-header {
     background-color: rgba(0, 0, 0, 0.9);
@@ -69,8 +90,8 @@ body {
 }
 
 .logo-section img {
-    height: 82px;
-    max-width: 190px;
+    height: 96px;
+    max-width: 235px;
     object-fit: contain;
 }
 
@@ -97,12 +118,12 @@ body {
   text-decoration: none;
   color: inherit;
   transition: all 0.3s ease;
-  border-bottom: 2px solid transparent; /* underline placeholder */
+  border-bottom: 0;
 }
 
 .navbar-nav .nav-link:hover {
   color: var(--gold) !important;
-  border-bottom-color: var(--gold); /* underline appears on hover */
+  border-bottom-color: transparent;
 }
 
 
@@ -127,6 +148,7 @@ background: linear-gradient(to right, #BD8A3C, #DDC686);
     padding: 10px 20px;
     border-radius: 15px;
     transition: all 0.3s;
+    text-decoration: none !important;
 }
 
 .btn-nominate:hover {
@@ -142,6 +164,7 @@ background: linear-gradient(to right, #BD8A3C, #DDC686);
     padding: 10px 20px;
     border-radius: 15px;
     transition: all 0.3s;
+    text-decoration: none !important;
 }
 
 .btn-sponsor:hover {
@@ -466,7 +489,7 @@ background: linear-gradient(to right, #BD8A3C, #DDC686);
     }
 
     .logo-section img {
-        height: 68px;
+        height: 78px;
     }
 
     .navbar-nav {
@@ -585,7 +608,7 @@ background: linear-gradient(to right, #BD8A3C, #DDC686);
     }
 
     .logo-section img {
-        height: 40px;
+        height: 56px;
     }
 
     .edition-text {
@@ -671,7 +694,7 @@ background: linear-gradient(to right, #BD8A3C, #DDC686);
     }
 
     .logo-section img {
-        height: 35px;
+        height: 48px;
     }
 
     .footer-logo {
@@ -701,7 +724,7 @@ background: linear-gradient(to right, #BD8A3C, #DDC686);
     }
 
     .logo-section img {
-        height: 30px;
+        height: 44px;
     }
 
     .edition-text {

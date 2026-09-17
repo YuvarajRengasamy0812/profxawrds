@@ -1146,67 +1146,71 @@
                         <div class="bt-roadmap_x">
                             <div class="bt-roadmap-wrap">
                                 <div class="bt-roadmap-item">
-                                    <span class="roadmap-title">6:00 PM</span>
+                                    <span class="roadmap-title">10:00 AM - 1:30 PM</span>
                                     <div class="roadmap-content">
                                         <span class="dot"></span>
-                                        <h4 class="title">Opening Cermony</h4>
-                                        <span>Anchor Speech ProFx Into & Teaser</span>
-                                        <span>Trophy Launch</span>
-
+                                        <h4 class="title">PROFX Summit</h4>
+                                        <span>Industry Speakers</span>
+                                        <span>Panel Discussions (2)</span>
+                                        <span>Thought Leadership</span>
+                                        <span>Market Trends & Opportunities</span>
+                                        <span>Networking</span>
                                     </div>
                                 </div>
                                 <div class="bt-roadmap-item">
-                                    <span class="roadmap-title">6:15 PM</span>
+                                    <span class="roadmap-title">1:30 PM - 4:00 PM</span>
                                     <div class="roadmap-content">
                                         <span class="dot"></span>
-                                        <h4 class="title">Speaker Speech</h4>
-                                        <span>Panel Speaker 1</span>
-                                        <span>Panel Speaker 2</span>
-                                        <span>Panel Speaker 3</span>
+                                        <h4 class="title">PROFX League</h4>
+                                        <span>3 Rounds Competition</span>
+                                        <span>Live Trading / Strategy League</span>
+                                        <span>Top Performers Recognition</span>
+                                        <span>Winner Announcement</span>
+                                        <span>Awards During PROFX Awards</span>
                                     </div>
                                 </div>
                                 <div class="bt-roadmap-item">
-                                    <span class="roadmap-title">6:45 PM</span>
+                                    <span class="roadmap-title">4:00 PM - 6:00 PM</span>
                                     <div class="roadmap-content">
                                         <span class="dot"></span>
-                                        <h4 class="title">Hi Tea & Entertainment</h4>
-                                        <span>Lunch</span>
-
+                                        <h4 class="title">PROFX Awards 2026</h4>
+                                        <span>Recognising Top Traders</span>
+                                        <span>Award Categories</span>
+                                        <span>League Winners Felicitation</span>
+                                        <span>Industry Recognition</span>
+                                        <span>Networking</span>
                                     </div>
                                 </div>
                                 <div class="bt-roadmap-item">
-                                    <span class="roadmap-title">7:00 Pm</span>
+                                    <span class="roadmap-title">6:00 PM - 7:00 PM</span>
                                     <div class="roadmap-content">
                                         <span class="dot"></span>
-                                        <h4 class="title">Award Distribution</h4>
-                                        <span>30 Awards Distribution</span>
-
+                                        <h4 class="title">Networking Break</h4>
+                                        <span>Exhibition Area Access</span>
+                                        <span>Networking Opportunities</span>
+                                        <span>Meet, Explore, Partner, Grow</span>
                                     </div>
                                 </div>
                                 <div class="bt-roadmap-item">
-                                    <span class="roadmap-title">8:00 PM</span>
+                                    <span class="roadmap-title">7:00 PM - 10:30 PM</span>
                                     <div class="roadmap-content">
                                         <span class="dot"></span>
-                                        <h4 class="title">Entertainment Show</h4>
-
+                                        <h4 class="title">PROBIZ Awards Dubai 2026</h4>
+                                        <span>Red Carpet Arrival</span>
+                                        <span>Gala Dinner</span>
+                                        <span>Award Presentations</span>
+                                        <span>Business Networking</span>
+                                        <span>Celebration & Entertainment</span>
                                     </div>
                                 </div>
                                 <div class="bt-roadmap-item">
-                                    <span class="roadmap-title">8:15 PM</span>
+                                    <span class="roadmap-title">10:00 AM - 10:30 PM</span>
                                     <div class="roadmap-content">
                                         <span class="dot"></span>
-                                        <h4 class="title">Speaker Speech</h4>
-                                        <span>Panel Speaker 4</span>
-                                        <span>Panel Speaker 5</span>
-                                        <span>Panel Speaker 6</span>
-                                    </div>
-                                </div>
-                                <div class="bt-roadmap-item">
-                                    <span class="roadmap-title">8:45 PM - 10:00 PM</span>
-                                    <div class="roadmap-content">
-                                        <span class="dot"></span>
-                                        <h4 class="title">Entertainment Show30 Awards Distribution</h4>
-
+                                        <h4 class="title">Exhibition & Networking</h4>
+                                        <span>Exhibition Area All Day</span>
+                                        <span>Networking Opportunities Throughout The Day</span>
+                                        <span>Four Events, Endless Opportunities</span>
                                     </div>
                                 </div>
                             </div>
@@ -1225,7 +1229,7 @@
                             <img src="{{ asset('assets/keditor/profx/assets/bannerimage.png') }}" alt="">
                         </div>
                     </div>
-                    <div class="col-lg-5 col-md-7 data-aos="fade-down-left"">
+                    <div class="col-lg-5 col-md-7" data-aos="fade-down-left">
                         <div class="document-content mt-50 wow fadeInRight" data-wow-delay=".2s">
                             <div class="section-title mb-35">
                                 <p
