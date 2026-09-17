@@ -5,7 +5,7 @@
             <div class="col-lg-9 col-md-12 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="venue-info">
                     <strong>Venue:</strong> Le Meridian, Airport Road, Dubai UAE
-                    <span class="venue-date"><strong>Date & Time:</strong> 19th December 2025, 6:00PM - 11:00PM</span>
+                    <span class="venue-date"><strong>Date & Time:</strong> {{ Helper::awardEventDateTime() }}</span>
                 </div>
             </div>
             <div class="col-lg-3 col-md-12 text-center text-lg-end">
@@ -26,7 +26,7 @@
         <!-- Logo -->
         <a class="navbar-brand" href="#">
             <div class="logo-section">
-                <img src="{{ asset('assets/keditor/profx/assets/Awards.png') }}" alt="PROPX Awards Logo">
+                <img src="{{ asset(Helper::awardLogoAsset()) }}" alt="PROFX Awards {{ Helper::awardYear() }} Logo">
             </div>
         </a>
 

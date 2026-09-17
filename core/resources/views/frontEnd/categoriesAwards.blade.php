@@ -20,15 +20,15 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOneLeft">
                         <button class="accordion-button btn-text"  type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneLeft" aria-expanded="true" aria-controls="collapseOneLeft">
-                            Best Financial & Online Trading Broker in Asia 2025
+                            Best Financial & Online Trading Broker in Asia {{ Helper::awardYear() }}
                         </button>
                     </h2>
                     <div id="collapseOneLeft" class="accordion-collapse collapse show" aria-labelledby="headingOneLeft" data-bs-parent="#accordionLeft">
                         <div class="accordion-body">
-                            <strong>The “Best Financial & Online Trading Broker in Asia 2025” award recognizes a forex broker that has demonstrated excellence in service, reliability, and innovation within the Asian market.</strong>
+                            <strong>The “Best Financial & Online Trading Broker in Asia {{ Helper::awardYear() }}” award recognizes a forex broker that has demonstrated excellence in service, reliability, and innovation within the Asian market.</strong>
                         </div>
                         <div class="text-center p-3">
-                            <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                            <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -37,15 +37,15 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwoLeft">
                         <button class="accordion-button btn-text collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoLeft" aria-expanded="false" aria-controls="collapseTwoLeft">
-                          Best Trade Execution Broker in Asia 2025
+                          Best Trade Execution Broker in Asia {{ Helper::awardYear() }}
                         </button>
                     </h2>
                     <div id="collapseTwoLeft" class="accordion-collapse collapse" aria-labelledby="headingTwoLeft" data-bs-parent="#accordionLeft">
                         <div class="accordion-body">
-                            <strong>The “Best Trade Execution Broker in Asia 2025” award honors a broker renowned for its superior trade execution speed, accuracy, and reliability..</strong>
+                            <strong>The “Best Trade Execution Broker in Asia {{ Helper::awardYear() }}” award honors a broker renowned for its superior trade execution speed, accuracy, and reliability..</strong>
                         </div>
                         <div class="text-center p-3">
-                                                       <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                                       <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -54,15 +54,15 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThreeLeft">
                         <button class="accordion-button btn-text collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeLeft" aria-expanded="false" aria-controls="collapseThreeLeft">
-                           Best IB Broker in Asia 2025
+                           Best IB Broker in Asia {{ Helper::awardYear() }}
                         </button>
                     </h2>
                     <div id="collapseThreeLeft" class="accordion-collapse collapse" aria-labelledby="headingThreeLeft" data-bs-parent="#accordionLeft">
                         <div class="accordion-body">
-                            <strong>The “Best IB Broker in Asia 2025” award recognizes an introducing broker (IB) that has excelled in client support, market knowledge, and partnership value. This award celebrates their exceptional performance and contributions to the success of their clients and the broader financial ecosystem in Asia..</strong>
+                            <strong>The “Best IB Broker in Asia {{ Helper::awardYear() }}” award recognizes an introducing broker (IB) that has excelled in client support, market knowledge, and partnership value. This award celebrates their exceptional performance and contributions to the success of their clients and the broader financial ecosystem in Asia..</strong>
                         </div>
                         <div class="text-center p-3">
-                                                       <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                                       <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -71,15 +71,15 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFourLeft">
                         <button class="accordion-button btn-text collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourLeft" aria-expanded="false" aria-controls="collapseFourLeft">
-                            Best Customer Support FX Broker in Asia 2025
+                            Best Customer Support FX Broker in Asia {{ Helper::awardYear() }}
                         </button>
                     </h2>
                     <div id="collapseFourLeft" class="accordion-collapse collapse" aria-labelledby="headingFourLeft" data-bs-parent="#accordionLeft">
                         <div class="accordion-body">
-                            <strong>The “Best Customer Support FX Broker in Asia 2025” award honors a forex broker that has demonstrated outstanding customer service, providing exceptional support and assistance to clients.</strong>
+                            <strong>The “Best Customer Support FX Broker in Asia {{ Helper::awardYear() }}” award honors a forex broker that has demonstrated outstanding customer service, providing exceptional support and assistance to clients.</strong>
                         </div>
                         <div class="text-center p-3">
-                                                      <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                                      <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -88,15 +88,15 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFiveLeft">
                         <button class="accordion-button btn-text collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiveLeft" aria-expanded="false" aria-controls="collapseFiveLeft">
-                           Trader’s Choice Financial & Online Trading Broker in Asia 2025
+                           Trader’s Choice Financial & Online Trading Broker in Asia {{ Helper::awardYear() }}
                         </button>
                     </h2>
                     <div id="collapseFiveLeft" class="accordion-collapse collapse" aria-labelledby="headingFiveLeft" data-bs-parent="#accordionLeft">
                         <div class="accordion-body">
-                            <strong>The “Trader’s Choice Financial & Online Trading Broker in Asia 2025” award celebrates the forex broker that has been most favored by traders for its overall performance, including trading conditions, platform features, and customer service.</strong>
+                            <strong>The “Trader’s Choice Financial & Online Trading Broker in Asia {{ Helper::awardYear() }}” award celebrates the forex broker that has been most favored by traders for its overall performance, including trading conditions, platform features, and customer service.</strong>
                         </div>
                         <div class="text-center p-3">
-                                                       <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                                       <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -110,15 +110,15 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOneRight">
                         <button class="accordion-button btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneRight" aria-expanded="true" aria-controls="collapseOneRight">
-                            Emerging Financial & Online Trading Broker in Asia 2025
+                            Emerging Financial & Online Trading Broker in Asia {{ Helper::awardYear() }}
                         </button>
                     </h2>
                     <div id="collapseOneRight" class="accordion-collapse collapse show" aria-labelledby="headingOneRight" data-bs-parent="#accordionRight">
                         <div class="accordion-body">
-                            <strong>The “Emerging Financial & Online Trading Broker in Asia 2025” award recognizes a new or rapidly growing forex broker that has shown exceptional promise and innovation in the industry.</strong>
+                            <strong>The “Emerging Financial & Online Trading Broker in Asia {{ Helper::awardYear() }}” award recognizes a new or rapidly growing forex broker that has shown exceptional promise and innovation in the industry.</strong>
                         </div>
                         <div class="text-center p-3">
-                                                       <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                                       <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -127,15 +127,15 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwoRight">
                         <button class="accordion-button btn-text collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoRight" aria-expanded="false" aria-controls="collapseTwoRight">
-                           Most Trusted Financial & Online Trading Broker in Asia 2025
+                           Most Trusted Financial & Online Trading Broker in Asia {{ Helper::awardYear() }}
                         </button>
                     </h2>
                     <div id="collapseTwoRight" class="accordion-collapse collapse" aria-labelledby="headingTwoRight" data-bs-parent="#accordionRight">
                         <div class="accordion-body">
-                            <strong>The “Most Trusted Financial & Online Trading Broker in Asia 2025” award honors a forex broker known for its reliability, transparency, and integrity. This recognition celebrates the broker’s strong reputation for building trust with clients and maintaining high standards in the Asian forex market..</strong>
+                            <strong>The “Most Trusted Financial & Online Trading Broker in Asia {{ Helper::awardYear() }}” award honors a forex broker known for its reliability, transparency, and integrity. This recognition celebrates the broker’s strong reputation for building trust with clients and maintaining high standards in the Asian forex market..</strong>
                         </div>
                         <div class="text-center p-3">
-                                                       <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                                       <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -144,15 +144,15 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThreeRight">
                         <button class="accordion-button btn-text collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeRight" aria-expanded="false" aria-controls="collapseThreeRight">
-                           Best Propfirm Broker in Asia 2025
+                           Best Propfirm Broker in Asia {{ Helper::awardYear() }}
                         </button>
                     </h2>
                     <div id="collapseThreeRight" class="accordion-collapse collapse" aria-labelledby="headingThreeRight" data-bs-parent="#accordionRight">
                         <div class="accordion-body">
-                            <strong>The “Best Propfirm Broker in Asia 2025” award recognizes a proprietary trading firm that has demonstrated exceptional performance, innovative trading solutions, and strong support for traders..</strong>
+                            <strong>The “Best Propfirm Broker in Asia {{ Helper::awardYear() }}” award recognizes a proprietary trading firm that has demonstrated exceptional performance, innovative trading solutions, and strong support for traders..</strong>
                         </div>
                         <div class="text-center p-3">
-                                                       <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                                       <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -161,15 +161,15 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFourRight">
                         <button class="accordion-button btn-text collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourRight" aria-expanded="false" aria-controls="collapseFourRight">
-                            Best Institutional Broker in Asia 2025
+                            Best Institutional Broker in Asia {{ Helper::awardYear() }}
                         </button>
                     </h2>
                     <div id="collapseFourRight" class="accordion-collapse collapse" aria-labelledby="headingFourRight" data-bs-parent="#accordionRight">
                         <div class="accordion-body">
-                            <strong>The “Best Institutional Broker in Asia 2025” award honors a broker that has excelled in serving institutional clients with top-notch trading solutions, advanced technology, and exceptional service.</strong>
+                            <strong>The “Best Institutional Broker in Asia {{ Helper::awardYear() }}” award honors a broker that has excelled in serving institutional clients with top-notch trading solutions, advanced technology, and exceptional service.</strong>
                         </div>
                         <div class="text-center p-3">
-                                                       <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                                       <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -178,15 +178,15 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFiveRight">
                         <button class="accordion-button btn-text collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiveRight" aria-expanded="false" aria-controls="collapseFiveRight">
-                            Best Financial & Online Trading Affiliate Broker in Asia 2025
+                            Best Financial & Online Trading Affiliate Broker in Asia {{ Helper::awardYear() }}
                         </button>
                     </h2>
                     <div id="collapseFiveRight" class="accordion-collapse collapse" aria-labelledby="headingFiveRight" data-bs-parent="#accordionRight">
                         <div class="accordion-body">
-                            <strong>The “Best Financial & Online Trading Affiliate Broker in Asia 2025” award recognizes a forex broker that has excelled in supporting and collaborating with affiliate partners. This award celebrates their outstanding affiliate programs, competitive commissions, and effective partnership support in the Asian forex market.</strong>
+                            <strong>The “Best Financial & Online Trading Affiliate Broker in Asia {{ Helper::awardYear() }}” award recognizes a forex broker that has excelled in supporting and collaborating with affiliate partners. This award celebrates their outstanding affiliate programs, competitive commissions, and effective partnership support in the Asian forex market.</strong>
                         </div>
                         <div class="text-center p-3">
-                    <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                    <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>

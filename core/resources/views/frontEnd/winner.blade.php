@@ -6,7 +6,7 @@
 <div class="hero-section">
     <div class="trophies-container">
         <div class="award-text">
-            <h1>PROFX AWARDS 2025</h1>
+            <h1>PROFX AWARDS {{ Helper::awardYear() }}</h1>
         </div>
     </div>
 </div>

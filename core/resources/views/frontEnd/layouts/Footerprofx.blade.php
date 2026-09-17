@@ -10,7 +10,7 @@
             <!-- About Section -->
             <div class="col-lg-4 col-md-6 mb-4 text-lg-start">
                 <a href="{{ url('/') }}" target="_blank" rel="noopener noreferrer">
-                    <img src=" {{ asset('assets/keditor/profx/assets/Awards.png') }}" alt="PROPX Awards Logo"
+                    <img src="{{ asset(Helper::awardLogoAsset()) }}" alt="PROFX Awards {{ Helper::awardYear() }} Logo"
                         class="footer-logo">
                 </a>
                 <p class="footer-description">

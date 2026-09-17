@@ -407,10 +407,10 @@
 
         <!-- Hero Content -->
         <div class="hero-content">
-            <h1 class="hero-title">PROFX Awards 2025</h1>
-            <p class="" style="font-size:25px; color: #fff;">Thank You For Making PROFX Awards 2025 a Success!</p>
+            <h1 class="hero-title">PROFX Awards {{ Helper::awardYear() }}</h1>
+            <p class="" style="font-size:25px; color: #fff;">Nominations are now open for PROFX Awards {{ Helper::awardYear() }}.</p>
             <div class="hero-buttons">
-                <a href="{{ url('/winner') }}" class="btn-hero-sponsor" data-bs-toggle="modal" data-bs-target="#winner2025">View Winners & Gallery
+                <a href="{{ url('/nomination') }}" class="btn-hero-sponsor">Nominate Now
                   </a>
                 <!--<a href="https://secure.profxawards.com/login" class="btn-hero-login">LOGIN</a>-->
             </div>
@@ -427,7 +427,7 @@
             <div class="brochure-content" data-aos="fade-down-right">
                 <div class="brochure-image">
                     <div>
-                        <img src="{{ asset('assets/keditor/profx/assets/Logo.png') }}" alt="Resource Brochure">
+                        <img src="{{ asset(Helper::awardLogoAsset()) }}" alt="PROFX Awards {{ Helper::awardYear() }}">
                         
                     </div>
 
@@ -440,10 +440,9 @@
                         Online Trading Awards
                     </h2>
                     <ul class="brochure-features">
-                        <p>Asia Premier ProFx Awards Platform That Offers Rewards and The platform helps investors to make
-                            easy to get sponsership and membership</p>
+                        <p>PROFX Awards Dubai recognises trusted brands, technology providers, educators, influencers, and leaders shaping the financial and online trading industry.</p>
                     </ul>
-                    <a href="{{ url('/winner') }}" class="cta-button">View Winners / Gallery</a>
+                    <a href="{{ url('/nomination') }}" class="cta-button">Submit Nomination</a>
                 </div>
             </div>
         </div>
@@ -453,8 +452,8 @@
         <div class="container">
             <p class="section-title"><span class="section-title-span">•</span>PROFX AWARDS SPONSORS <span
                     class="section-title-span">•</span></p>
-            <h2 class="section-heading">Check Who Made The Event <p
-                    style="font-weight: 600;font-size: 35px;color: #d4af37;">Possible</p>
+            <h2 class="section-heading">Meet The Brands Powering <p
+                    style="font-weight: 600;font-size: 35px;color: #d4af37;">PROFX Awards {{ Helper::awardYear() }}</p>
             </h2>
 
             <!--<div class="sponsor-tier container mb-3">-->
@@ -552,7 +551,7 @@
                     </div>
 
                     <div class="sponsor-tier container mb-3">
-                        <p class="tier-title"> Award Winners</p>
+                        <p class="tier-title">Featured Brands</p>
                         <div class="sponsor-grid">
                             <!--<div class="ga-image-wrappertest">-->
                             <!--    <img class="d-flex" src="{{ asset('assets/keditor/profx/assets/award/14.png') }}"-->
@@ -1234,7 +1233,7 @@
                                     <span class="section-title-span">•</span>Discover Excellence<span
                                         class="section-title-span">•</span></p>
                                 <h2 class="title" style="text-align: left;">Download The ProFxAwards Dubai <p
-                                        style="color: #d4af37;font-weight: 600;font-size: 35px;"> 2025 Brochure</p>
+                                        style="color: #d4af37;font-weight: 600;font-size: 35px;"> {{ Helper::awardYear() }} Brochure</p>
                                 </h2>
                             </div>
                             <ul class="document-list">
@@ -1243,7 +1242,7 @@
                                 <li>Prepare To Participate</li>
                                 <li>Our T&C for Awards</li>
                             </ul>
-                            <a href="{{ asset('assets/keditor/profx/assets/ProFXAwardsDubai2025.pdf') }}" download
+                            <a href="{{ asset(Helper::awardBrochureAsset()) }}" download
                                 class="btn-nominate">Download Doc</a>
                         </div>
                     </div>
@@ -1265,7 +1264,7 @@
 
                     <div class="venue-details">
                         <p style="color: #d4af37;"><strong>Venue:</strong> Le Méridien, Airport Road, Dubai UAE</p>
-                        <p style="color: #d4af37;"><strong>Date:</strong> 19th December 2025</p>
+                        <p style="color: #d4af37;"><strong>Date:</strong> {{ Helper::awardEventDate() }}</p>
                         <p style="color: #d4af37;"><strong>Time:</strong> 6:00 pm – 11:00 pm</p>
                     </div>
 

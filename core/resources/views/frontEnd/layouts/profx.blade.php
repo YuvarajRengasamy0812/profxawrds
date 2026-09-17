@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROFX Awards 2025 - Global Financial & Online Trading Awards</title>
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon" />
+    <title>PROFX Awards {{ Helper::awardYear() }} - Global Financial & Online Trading Awards</title>
+    <link rel="icon" href="{{ asset(Helper::awardLogoAsset()) }}" type="image/png" />
 
     
     <!-- Bootstrap CSS -->
@@ -12,13 +12,11 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     
-        <link rel="stylesheet" href="resources/css/styles.css">
              <link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/profx/css/styles.css') }}"/>
                           <link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/profx/css/style.css') }}"/>
      <link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/css/tested.css') }}"/>
 
 
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/profx/js/script.js') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/profx/css/bootstrap.min.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/profx/css/animate.min.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/profx/css/fontawesome-all.min.css') }}"/>
@@ -26,7 +24,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/profx/css/odometer.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/profx/css/slick.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/profx/css/default.css') }}"/>
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/profx/css/styles.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/keditor/profx/css/responsive.css') }}"/>
           
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -35,6 +32,7 @@
   
 </head>
 <body>
+@if(request()->routeIs('profx'))
 <div id="loader">
   <div class="loader"></div>
   <div class="progress-container mt-3">
@@ -42,6 +40,7 @@
   </div>
   <div class="loading-text" id="loadingText">Loading...</div>
 </div>
+@endif
 @include('frontEnd.layouts.headerprofx')
 
 @include('frontEnd.layouts.sidebarprofx')
@@ -63,12 +62,12 @@
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
+    @if(request()->routeIs('profx'))
     <script>
 document.addEventListener("DOMContentLoaded", function() {
     const loader = document.getElementById('loader');
     const progressBar = document.getElementById('progressBar');
     const loadingText = document.getElementById('loadingText');
-    const content = document.getElementById('content');
 
     let progress = 0;
     const interval = setInterval(() => {
@@ -86,13 +85,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 setTimeout(() => {
                     loader.style.display = 'none';
-                    content.style.display = 'block';
                 }, 500);
             }, 200);
         }
     }, 50);
 });
 </script>
+@endif
     
     <!-- Custom Scripts -->
     <script>

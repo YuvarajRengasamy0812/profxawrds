@@ -66,7 +66,7 @@ Route::get('/influencer', function () {
 })->name('Influencer');
 
 Route::get('/winner', function () {
-    return view('frontEnd.winner');
+    return redirect()->route('nomination');
 })->name('winner');
 
 
@@ -134,4 +134,3 @@ Route::get('/tag/{tag_slug?}', [HomeController::class, 'tag'])->name('tag');
 // - All Other slugs
 Route::get('/{part1?}/{part2?}/{part3?}/{part4?}/{part5?}/{part6?}', [HomeController::class, 'seo'])->name("frontendRoute");
 // End of Frontend Route
-

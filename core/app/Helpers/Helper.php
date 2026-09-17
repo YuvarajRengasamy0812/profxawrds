@@ -30,6 +30,60 @@ use Newsletter;
 
 class Helper
 {
+    static function awardYear(): string
+    {
+        return Carbon::now()->format('Y');
+    }
+
+    static function awardEventDate(): string
+    {
+        return '19th December ' . Helper::awardYear();
+    }
+
+    static function awardEventDateTime(): string
+    {
+        return Helper::awardEventDate() . ', 6:00PM - 11:00PM';
+    }
+
+    static function awardAsset(string $template, string $fallback): string
+    {
+        $asset = str_replace('{year}', Helper::awardYear(), $template);
+
+        return file_exists(base_path('../' . $asset)) ? $asset : $fallback;
+    }
+
+    static function awardLogoAsset(): string
+    {
+        return Helper::awardAsset(
+            'assets/keditor/profx/assets/Awards-{year}.png',
+            'assets/keditor/profx/assets/Awards-2026.png'
+        );
+    }
+
+    static function siteLogoAsset(): string
+    {
+        $language = Helper::currentLanguage();
+        $logo = Helper::GeneralSiteSettings('style_logo_' . ($language->code ?? config('smartend.default_language', 'en')));
+
+        if ($logo != "") {
+            $asset = 'uploads/settings/' . $logo;
+
+            if (file_exists(base_path('../' . $asset))) {
+                return $asset;
+            }
+        }
+
+        return Helper::awardLogoAsset();
+    }
+
+    static function awardBrochureAsset(): string
+    {
+        return Helper::awardAsset(
+            'assets/keditor/profx/assets/ProFXAwardsDubai{year}.pdf',
+            'assets/keditor/profx/assets/ProFXAwardsDubai2025.pdf'
+        );
+    }
+
     static function system_version()
     {
         return Helper::GeneralWebmasterSettings("version");
@@ -177,9 +231,13 @@ class Helper
 
     static function SaveVisitorInfo($PageTitle)
     {
+        if (App::runningInConsole() || empty($_SERVER['REMOTE_ADDR'])) {
+            return "";
+        }
+
         if (config('smartend.geoip_status')) {
             $visitor_ip = $_SERVER['REMOTE_ADDR'];
-            $current_page_full_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $current_page_full_link = request()->fullUrl();
             $page_load_time = round((microtime(true) - LARAVEL_START), 8);
 
             // Check is it already saved today to visitors?

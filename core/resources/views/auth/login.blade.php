@@ -4,12 +4,7 @@
     <div class="center-block w-xxl p-a-2">
         <div class="box-color r box-shadow-z4 text-color m-b-0">
             <div class="p-a-md text-center">
-                @if(Helper::GeneralSiteSettings("style_logo_" . @Helper::currentLanguage()->code) !="")
-                    <img alt="" class="app-logo"
-                         src="{{ URL::to('uploads/settings/'.Helper::GeneralSiteSettings("style_logo_" . @Helper::currentLanguage()->code)) }}">
-                @else
-                    <img alt="" src="{{ URL::to('uploads/settings/nologo.png') }}">
-                @endif
+                <img alt="" class="app-logo" src="{{ asset(Helper::siteLogoAsset()) }}">
             </div>
             <div class="p-a text-center">
                 <h5 class="text-muted m-b-0"><strong>{{ __('backend.signedInToControl') }}</strong></h5>
@@ -108,4 +103,3 @@
 
     </div>
 @endsection
-

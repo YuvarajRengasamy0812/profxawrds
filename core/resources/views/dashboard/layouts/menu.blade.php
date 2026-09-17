@@ -18,7 +18,7 @@ $mnu_title_var2 = "title_" . config('smartend.default_language');
             </a>
             <!-- brand -->
             <a class="navbar-brand" href="{{ route('adminHome') }}">
-                <img class="m-r-sm" style="width:150px;" src="{{ asset('assets/keditor/profx/assets/Awards.png') }}" alt="Control">
+                <img class="m-r-sm" style="width:150px;" src="{{ asset(Helper::awardLogoAsset()) }}" alt="PROFX Awards {{ Helper::awardYear() }}">
               
             </a>
             <!-- / brand -->

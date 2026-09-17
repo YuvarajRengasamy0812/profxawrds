@@ -27,7 +27,7 @@
                 <div class="col-lg-9 col-md-12 text-center text-lg-start mb-2 mb-lg-0">
                     <div class="venue-info">
                         <strong>Venue:</strong> Le Meridian, Airport Road, Dubai UAE
-                        <span class="venue-date"><strong>Date & Time:</strong> 19th December 2025, 6:00PM - 11:00PM</span>
+                        <span class="venue-date"><strong>Date & Time:</strong> {{ Helper::awardEventDateTime() }}</span>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 text-center text-lg-end">
@@ -45,13 +45,9 @@
     <!-- Main Navigation -->
     <nav class="navbar navbar-expand-lg main-header"  style="position: sticky; top: 0; z-index:41;">
         <div class="container-fluid">
-            <!-- Logo -->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ url('/') }}">
                 <div class="logo-section">
-
- <a  href="{{ url('/') }}" >
-                    <img src=" {{ asset('assets/keditor/profx/assets/Awards.png') }}" alt="PROPX Awards Logo">
-                    </a>                    
+                    <img src="{{ asset(Helper::awardLogoAsset()) }}" alt="PROFX Awards {{ Helper::awardYear() }} Logo">
                 </div>
             </a>
 
@@ -73,9 +69,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}#agendarecap">EVENT HIGHLIGHTS</a>
                     </li>
-                    <!--  <li class="nav-item">-->
-                    <!--    <a class="nav-link" href="{{ url('/') }}#agenda">AGENDA</a>-->
-                    <!--</li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/gallery') }}">GALLERY</a>
                     </li>
@@ -119,140 +112,14 @@
                             <li><a class="dropdown-item" href="{{ url('/previewsevent') }}">PREVIOUS SPONSORS 2024</a></li>
                         </ul>
                     </li>
-                    <!--<li class="nav-item">-->
-                    <!--    <a class="nav-link" href="{{ url('/award') }}">AWARDS</a>-->
-                    <!--</li>-->
                 </ul>
 
-                <!-- CTA Buttons -->
                 <div class="cta-buttons d-flex gap-2">
-                    <a href="{{ url('/winner') }}" class="btn-nominate">WINNERS</a>
-                    <!--<a href="#sponsor" class="btn-sponsor" data-bs-toggle="modal"-->
-                    <!--    data-bs-target="#sponsorModal25">SPONSOR 2025</a>-->
-                    <!--<a href="https://secure.profxawards.com/login" class="btn-login">LOGIN</a>-->
+                    <a href="{{ url('/nomination') }}" class="btn-nominate">NOMINATE</a>
                 </div>
-                <!--  <div class="cta-buttons d-flex gap-2">-->
-                <!--    <a href="{{ url('/nomination') }}" class="btn-nominate">NOMINATE</a>-->
-                <!--    <a href="#sponsor" class="btn-sponsor" data-bs-toggle="modal"-->
-                <!--        data-bs-target="#sponsorModal25">SPONSOR</a>-->
-                    <!--<a href="https://secure.profxawards.com/login" class="btn-login">LOGIN</a>-->
-                <!--</div>-->
-
-
             </div>
         </div>
     </nav>
-
-    <!-- Include Bootstrap CSS and JS -->
-
-
-<!-- Your Existing Top Bar & Navigation -->
-<!-- (You can keep your same top bar and nav as it is) -->
-
-<!-- Replace only the SPONSOR button to trigger the Bootstrap modal -->
-
-
-<!-- Bootstrap Sponsor Modal -->
-
-
-<div class="modal fade z-index-9999" id="sponsorModal25" tabindex="-1" aria-labelledby="sponsorModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-header">
-        <h5 class="modal-title text-dark fw-semibold" id="sponsorModalLabel">Become a Sponsor</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <div class="modal-body">
-  <!--       @if(session('success'))-->
-  <!--  <div class="alert alert-success alert-dismissible fade show text-center" role="alert">-->
-  <!--    {{ session('success') }}-->
-  <!--    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
-  <!--  </div>-->
-  <!--@endif-->
-      <form action="{{ route('contactPageSubmited') }}" method="POST">
-  @csrf
-  <div class="row g-3">
-    <div class="col-md-6">
-      <label class="form-label">First Name</label>
-      <input type="text" name="first_name" class="form-control" placeholder="Enter first name" required>
-    </div>
-    <div class="col-md-6">
-      <label class="form-label">Last Name</label>
-      <input type="text" name="last_name" class="form-control" placeholder="Enter last name" required>
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Email</label>
-      <input type="email" name="email" class="form-control" placeholder="Enter email" required>
-    </div>
-    <div class="col-md-6">
-      <label class="form-label">Phone</label>
-      <input type="tel" name="phone" class="form-control" placeholder="Enter phone number">
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Company Name</label>
-      <input type="text" name="company" class="form-control" placeholder="Enter company name">
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Country</label>
-      <select name="country" class="form-select" required>
-        <option value="">Select Country</option>
-        <option>United States</option>
-        <option>United Kingdom</option>
-        <option>India</option>
-        <option>United Arab Emirates</option>
-        <option>Canada</option>
-        <option>Australia</option>
-        <option>Germany</option>
-        <option>France</option>
-        <option>Japan</option>
-        <option>China</option>
-        <option>Brazil</option>
-        <option>South Africa</option>
-        <option>Italy</option>
-        <option>Spain</option>
-        <option>Mexico</option>
-        <option>Singapore</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="text-center mt-4">
-    <button type="submit" class="btn btn-primary px-5 py-2">Submit</button>
-  </div>
-</form>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Check if session has sponsor_success
-    @if(session('sponsor_success'))
-        var sponsorSuccess = true;
-    @else
-        var sponsorSuccess = false;
-    @endif
-
-    if(sponsorSuccess){
-        var sponsorModalEl = document.getElementById('sponsorModal25');
-        if(sponsorModalEl){
-            var sponsorModal = new bootstrap.Modal(sponsorModalEl);
-            sponsorModal.show();
-
-            // Auto close after 3 seconds
-            setTimeout(function() {
-                sponsorModal.hide();
-            }, 3000);
-        }
-    }
-});
-</script>
 
 <script>
         document.addEventListener("DOMContentLoaded", function() {

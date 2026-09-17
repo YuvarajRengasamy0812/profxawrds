@@ -28,7 +28,7 @@
                             <strong>The “Excellence in Stock Market Education” award honors an organization or platform that has demonstrated outstanding commitment to educating investors and traders about the stock market..</strong>
                         </div>
                         <div class="text-center p-3">
-                                               <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                               <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                             <strong>The “Outstanding Multi-Asset Financial Education” award recognizes an organization or platform that excels in providing comprehensive educational resources across various asset classes..</strong>
                         </div>
                         <div class="text-center p-3">
-                                               <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                               <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
 
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             <strong>The “Best Online Trading Academy” award honors an academy that excels in providing top-notch online education and training for traders and investors.</strong>
                         </div>
                         <div class="text-center p-3">
-                                               <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                               <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                             <strong>The “Best Professional Trading Course” award recognizes a course that offers exceptional training and education for advanced traders. This award celebrates its in-depth content, expert instruction, and practical strategies that equip professionals with the skills and knowledge to excel in trading..</strong>
                         </div>
                         <div class="text-center p-3">
-                                               <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                               <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                             <strong>The “Best Trading Strategy Development Course” award honors a course that excels in teaching traders how to create and refine effective trading strategies.</strong>
                         </div>
                         <div class="text-center p-3">
-                                               <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                               <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                             <strong>The “Best Financial Education Content Creator” award recognizes an individual or organization that produces outstanding financial education content..</strong>
                         </div>
                         <div class="text-center p-3">
-                                               <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                                               <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                             <strong>The “Best Advanced Trading Program” award honors a program that provides top-tier education and training for experienced traders. This recognition celebrates its in-depth content, sophisticated strategies.</strong>
                         </div>
                         <div class="text-center p-3">
-                         <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                         <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                             <strong>The “Best Technical Analysis Course” award recognizes a course that excels in teaching the principles and techniques of technical analysis..</strong>
                         </div>
                         <div class="text-center p-3">
-                         <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                         <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                             <strong>The “Best Trading Mentorship Program” award honors a program that provides exceptional guidance and support for traders through personalized mentorship.</strong>
                         </div>
                         <div class="text-center p-3">
-                      <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                      <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                             <strong>The “Best Algorithmic Trading Education” award recognizes a program or platform that excels in teaching the principles and techniques of algorithmic trading.e.</strong>
                         </div>
                         <div class="text-center p-3">
-                    <a href="{{ url('/winner') }}" class="btn btn-primary" target="_blank">WINNERS</a>
+                    <a href="{{ url('/nomination') }}" class="btn btn-primary">NOMINATE</a>
                         </div>
                     </div>
                 </div>
