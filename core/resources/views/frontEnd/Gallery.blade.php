@@ -24,33 +24,34 @@
     </div>
 
     @php
-        // Fetch all gallery topics
-        $HomePartnersLimit = null; // set to null or a high number if 0 causes issues
-        $HomePartners = Helper::Topics(
-            Helper::GeneralWebmasterSettings('home_content3_section_id'),
-            0,
-            $HomePartnersLimit,
-            1,
-        );
+        $gallerySectionId = 23;
+        $title_var = 'title_' . (@Helper::currentLanguage()->code ?: config('smartend.default_language'));
+        $title_var2 = 'title_' . config('smartend.default_language');
 
-        // Collect unique titles by slug (avoid duplicate-slug tabs)
-        $titles = [];
-        $titles_by_slug = [];
-        foreach ($HomePartners as $item) {
-            $title_var = 'title_' . @Helper::currentLanguage()->code;
-            $title_var2 = 'title_' . config('smartend.default_language');
-            $title = trim($item->$title_var ?: $item->$title_var2 ?: 'Untitled');
+        $GalleryCategories = \App\Models\Section::where('webmaster_id', $gallerySectionId)
+            ->where('status', 1)
+            ->orderby('father_id', 'asc')
+            ->orderby('row_no', 'asc')
+            ->get();
 
-            // create slug; if empty fallback to 'untitled'
-            $slug = \Illuminate\Support\Str::slug($title);
-            if (empty($slug)) {
-                $slug = 'untitled';
-            }
+        $HomePartners = \App\Models\Topic::where('webmaster_id', $gallerySectionId)
+            ->where('status', 1)
+            ->where(function ($query) {
+                $query->whereNull('expire_date')
+                    ->orWhere('expire_date', '>=', date('Y-m-d'));
+            })
+            ->with(['categories', 'photos'])
+            ->orderby('date', config('smartend.frontend_topics_order'))
+            ->orderby('id', config('smartend.frontend_topics_order'))
+            ->get();
 
-            if (!isset($titles_by_slug[$slug])) {
-                $titles_by_slug[$slug] = $title; // store original title for label
-            }
-        }
+        $categoryIds = $GalleryCategories->pluck('id')->map(function ($id) {
+            return (int) $id;
+        })->all();
+
+        $getLocalizedTitle = function ($item) use ($title_var, $title_var2) {
+            return trim($item->$title_var ?: $item->$title_var2 ?: 'Untitled');
+        };
     @endphp
 
 
@@ -58,10 +59,12 @@
         <!-- Tabs -->
         <div class="tab-navigation">
             <div class="tab-buttons text-center mb-4">
-                <button class="tab-btn active" data-title="all">All</button>
+                <button class="tab-btn active" data-category="all">All</button>
 
-                @foreach ($titles_by_slug as $slug => $label)
-                    <button class="tab-btn" data-title="{{ $slug }}">{{ $label }}</button>
+                @foreach ($GalleryCategories as $GalleryCategory)
+                    <button class="tab-btn" data-category="cat-{{ $GalleryCategory->id }}">
+                        {{ $getLocalizedTitle($GalleryCategory) }}
+                    </button>
                 @endforeach
             </div>
         </div>
@@ -98,6 +101,37 @@
       font-size: 0.9rem;    
       cursor: pointer;
     }
+
+            .gallery-page #partners .gallery-grid {
+                display: grid !important;
+                grid-template-columns: repeat(auto-fill, minmax(260px, 340px)) !important;
+                justify-content: center !important;
+                align-items: start !important;
+                gap: 24px !important;
+            }
+
+            .gallery-page #partners .gallery-item {
+                width: 100% !important;
+                max-width: 340px !important;
+                transition: all 0.3s ease;
+            }
+
+            .gallery-page #partners .gallery-item img {
+                width: 100% !important;
+                height: 220px !important;
+                object-fit: contain !important;
+                background: #050c14;
+                border-radius: 0 !important;
+                transition: transform 0.3s ease;
+            }
+
+            .gallery-page #partners .gallery-item img:hover {
+                transform: scale(1.03);
+            }
+
+            .gallery-page #partners .gallery-item.hide {
+                display: none !important;
+            }
         </style>
         <section id="partners" class="gallery gallery-section py-5">
             <div class="container">
@@ -106,24 +140,47 @@
 
                     @foreach ($HomePartners as $HomePartner)
                         @php
-                            $title_var = 'title_' . @Helper::currentLanguage()->code;
-                            $title_var2 = 'title_' . config('smartend.default_language');
-                            $title = trim($HomePartner->$title_var ?: $HomePartner->$title_var2 ?: 'Untitled');
+                            $title = $getLocalizedTitle($HomePartner);
 
-                            $photo = $HomePartner->photo_file
-                                ? URL::to('uploads/topics/' . $HomePartner->photo_file)
-                                : asset('frontEnd/assets/images/no-image.png');
+                            $topicCategoryIds = $HomePartner->categories->pluck('section_id')->map(function ($id) {
+                                return (int) $id;
+                            })->all();
 
-                            $dataTitle = \Illuminate\Support\Str::slug($title);
-                            if (empty($dataTitle)) {
-                                $dataTitle = 'untitled';
+                            if ((int) $HomePartner->section_id > 0) {
+                                $topicCategoryIds[] = (int) $HomePartner->section_id;
+                            }
+
+                            $topicCategoryIds = array_values(array_unique(array_intersect($topicCategoryIds, $categoryIds)));
+                            $dataCategories = implode(' ', array_map(function ($id) {
+                                return 'cat-' . $id;
+                            }, $topicCategoryIds));
+
+                            $displayImages = $HomePartner->photos->filter(function ($photo) {
+                                return $photo->file != '';
+                            })->map(function ($photo) use ($title) {
+                                return [
+                                    'url' => URL::to('uploads/topics/' . $photo->file),
+                                    'title' => trim($photo->title ?: $title),
+                                ];
+                            });
+
+                            if ($displayImages->isEmpty()) {
+                                $displayImages = collect([
+                                    [
+                                        'url' => $HomePartner->photo_file
+                                            ? URL::to('uploads/topics/' . $HomePartner->photo_file)
+                                            : asset('frontEnd/assets/images/no-image.png'),
+                                        'title' => $title,
+                                    ],
+                                ]);
                             }
                         @endphp
 
-                        <div class="gallery-item" data-title="{{ $dataTitle }}">
-                            <img src="{{ $photo }}" alt="{{ $title }}" loading="lazy" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
-                            <h3 class="text-center mt-2">{{ $title }}</h3>
-                        </div>
+                        @foreach ($displayImages as $displayImage)
+                            <div class="gallery-item" data-categories="{{ $dataCategories }}">
+                                <img src="{{ $displayImage['url'] }}" alt="{{ $displayImage['title'] }}" loading="lazy" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
+                            </div>
+                        @endforeach
                     @endforeach
 
                 </div>
@@ -262,65 +319,11 @@
                 const tabs = Array.from(document.querySelectorAll('.tab-btn'));
                 const items = Array.from(document.querySelectorAll('.gallery-item'));
 
-                function normalize(str) {
-                    if (!str && str !== '') return '';
-                    return String(str).toLowerCase().trim();
-                }
-
-                function showItems(selectedRaw) {
-                    const selected = normalize(selectedRaw);
-
-                    items.forEach(item => {
-                        const itemTitleAttr = item.getAttribute('data-title');
-                        const itemTitle = normalize(itemTitleAttr);
-
-                        // if item's data-title missing, fallback to h3 text
-                        const fallbackTitle = normalize(item.querySelector('h3')?.textContent || '');
-
-                        const matches = (selected === 'all') ||
-                            itemTitle === selected ||
-                            (itemTitle && itemTitle.includes(selected)) ||
-                            fallbackTitle === selected ||
-                            (fallbackTitle && fallbackTitle.includes(selected));
-
-                        if (matches) {
-                            item.classList.remove('hide');
-                        } else {
-                            item.classList.add('hide');
-                        }
-                    });
-                }
-
-                tabs.forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        // Remove active class from all tabs
-                        tabs.forEach(t => t.classList.remove('active'));
-                        tab.classList.add('active');
-
-                        // prefer data-title attribute on tab; fallback to button text
-                        const selectedTitle = tab.getAttribute('data-title') || tab.textContent ||
-                            'all';
-                        showItems(selectedTitle);
-                    });
-                });
-
-                // Show all items by default
-                showItems('all');
-
-                // DEBUG: uncomment to inspect titles and slugs
-                // console.log('tabs:', tabs.map(t => t.getAttribute('data-title') || t.textContent));
-                // console.log('items:', items.map(i => i.getAttribute('data-title') || i.querySelector('h3')?.textContent));
-            });
-        </script>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const tabs = document.querySelectorAll('.tab-btn');
-                const items = document.querySelectorAll('.gallery-item');
-
                 function showItems(selected) {
                     items.forEach(item => {
-                        const match = selected === 'all' || item.dataset.title === selected;
-                        item.style.display = match ? 'block' : 'none';
+                        const categories = (item.dataset.categories || '').split(' ').filter(Boolean);
+                        const match = selected === 'all' || categories.includes(selected);
+                        item.classList.toggle('hide', !match);
                     });
                 }
 
@@ -328,12 +331,11 @@
                     tab.addEventListener('click', () => {
                         tabs.forEach(t => t.classList.remove('active'));
                         tab.classList.add('active');
-                        const selected = tab.dataset.title;
+                        const selected = tab.dataset.category || 'all';
                         showItems(selected);
                     });
                 });
 
-                // show all by default
                 showItems('all');
             });
         </script>
@@ -374,35 +376,34 @@
             background: #ddd;
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 12px;
+        .gallery-page #partners .gallery-item img {
+            width: 100% !important;
+            height: 220px !important;
+            object-fit: contain !important;
+            background: #050c14;
+            border-radius: 0 !important;
             transition: transform 0.3s ease;
         }
 
-        .gallery-item img:hover {
+        .gallery-page #partners .gallery-item img:hover {
             transform: scale(1.03);
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        .gallery-page #partners .gallery-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 340px)) !important;
+            justify-content: center !important;
+            align-items: start !important;
+            gap: 24px !important;
         }
 
-        .gallery-item h3 {
-            font-size: 1rem;
-            margin-top: 10px;
-            font-weight: 600;
-        }
-
-        .gallery-item.hide {
+        .gallery-page #partners .gallery-item.hide {
             display: none !important;
         }
 
-        .gallery-item {
+        .gallery-page #partners .gallery-item {
+            width: 100% !important;
+            max-width: 340px !important;
             transition: all 0.3s ease;
         }
     </style>
