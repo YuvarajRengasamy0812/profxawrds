@@ -105,16 +105,6 @@
 
                         </ul>
                     </li>
- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                          PREVIOUS AWARDS
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/award') }}">PREVIOUS AWARDS 2024</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/previewsevent') }}">PREVIOUS SPONSORS 2024</a></li>
-                        </ul>
-                    </li>
                 </ul>
 
                 <div class="cta-buttons d-flex gap-2">
