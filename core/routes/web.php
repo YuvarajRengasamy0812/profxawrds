@@ -121,7 +121,6 @@ Route::post('/contact-submit', [HomeController::class, 'contact_submit'])->name(
 Route::post('/', [HomeController::class, 'contact_submited'])->name('contactPageSubmited');
 
 // - Nominations
-Route::get('nominations', [NominationController::class,'index'])->name('nominations.index');
 
 Route::post('nominations/store', [NominationController::class,'store'])->name('nominations.store');
 

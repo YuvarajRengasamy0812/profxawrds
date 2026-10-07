@@ -70,11 +70,7 @@
 
                 @if(Helper::GeneralSiteSettings("style_subscribe"))
 
-                                <form id="newsletterForm" class="newsletter-forms">
-
-                                    {{-- Laravel Collective Form --}}
-                                    {{ Form::open(['route' => 'subscribeSubmit', 'method' => 'POST', 'id' => 'subscribeForm']) }}
-                                    @csrf
+                                    {{ Form::open(['route' => 'subscribeSubmit', 'method' => 'POST', 'id' => 'subscribeForm', 'class' => 'newsletter-forms']) }}
                                     {!! Form::email('subscribe_email', old('subscribe_email'), [
                         'placeholder' => "info@profxawards.com",
                         'class' => 'newsletter-input',
@@ -87,7 +83,27 @@
                                         <i class="bi bi-send">Send</i>
                                     </button>
                                     {{ Form::close() }}
-                                </form>
+                                <div id="subscribeResult" class="mt-2" style="font-size:14px"></div>
+                                <script>
+                                    document.getElementById('subscribeForm').addEventListener('submit', function (evt) {
+                                        evt.preventDefault();
+                                        var form = this, btn = document.getElementById('subscribeFormSubmit'),
+                                            result = document.getElementById('subscribeResult');
+                                        btn.disabled = true;
+                                        fetch(form.action, {
+                                            method: 'POST',
+                                            body: new FormData(form),
+                                            headers: {'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json'}
+                                        }).then(function (r) { return r.json(); }).then(function (data) {
+                                            result.style.color = data.stat === 'success' ? '#4caf50' : '#d4af37';
+                                            result.textContent = data.msg;
+                                            if (data.stat === 'success') form.reset();
+                                        }).catch(function () {
+                                            result.style.color = '#f44336';
+                                            result.textContent = 'Something went wrong, please try again.';
+                                        }).finally(function () { btn.disabled = false; });
+                                    });
+                                </script>
 
                 @endif
                 <div class="social-icons-footer">

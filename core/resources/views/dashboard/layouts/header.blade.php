@@ -9,18 +9,13 @@
         <div class="navbar-item pull-left h5" ng-bind="$state.current.data.title" id="pageTitle"></div>
 
         <!-- navbar right -->
-       <ul class="nav navbar-nav pull-right">
-            <!-- <li class="nav-item pa-13">
-                <a class="btn btn info" href="{{ route("frontendRoute") }}" target="_blank">
-                    <i class="material-icons">&#xe895;</i> <small>{{ __('backend.sitePreview') }}</small>
+        <ul class="nav navbar-nav pull-right">
+            <li class="nav-item pa-13 hidden-xs-down">
+                <a class="btn btn-sm info" href="{{ url('/') }}" target="_blank">
+                    <i class="material-icons">&#xe895;</i> <small>View Website</small>
                 </a>
-            </li> -->
-            <?php
-            $webmailsAlerts = Helper::webmailsAlerts();
-            $eventsAlerts = Helper::eventsAlerts();
-            $alerts = count($webmailsAlerts) + count($eventsAlerts);
-            ?>
-           
+            </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link clear" data-toggle="dropdown">
                   <span class="avatar w-32">
@@ -35,16 +30,9 @@
                   </span>
                 </a>
                 <div class="dropdown-menu pull-right dropdown-menu-scale ">
-                    @if(Helper::GeneralWebmasterSettings("inbox_status"))
-                        @if(@Auth::user()->permissionsGroup->inbox_status)
-                            <a class="dropdown-item"
-                               href="{{ route('webmails') }}"><span>{{ __('backend.siteInbox') }}</span>
-                                @if( @$webmailsNewCount >0)
-                                    <span class="label warn m-l-xs">{{ @$webmailsNewCount }}</span>
-                                @endif
-                            </a>
-                        @endif
-                    @endif
+                    <a class="dropdown-item hidden-sm-up" href="{{ url('/') }}" target="_blank">
+                        <span>View Website</span>
+                    </a>
                     @if(Auth::user()->permissions ==0 || Auth::user()->permissions ==1)
                         <a class="dropdown-item"
                            href="{{ route('usersEdit',Auth::user()->id) }}"><span>{{ __('backend.profile') }}</span></a>
@@ -59,7 +47,7 @@
                     <i class="material-icons">&#xe5d4;</i>
                 </a>
             </li>
-        </ul> 
+        </ul>
 
         <!-- navbar collapse -->
         <div class="collapse navbar-toggleable-sm" id="collapse">
@@ -76,104 +64,33 @@
                 {{Form::close()}}
             @endif
 
-            @if(Helper::GeneralWebmasterSettings("license") && Helper::GeneralWebmasterSettings("purchase_code")!="")
-                @if(@Auth::user()->permissionsGroup->add_status)
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item dropdown pa-13">
-                            <a class="btn light" data-toggle="dropdown">
-                                <i class="material-icons">&#xe145;</i>
-                                <span>{{ __('backend.new') }} </span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-scale">
-                                <?php
-                                $data_sections_arr = explode(",", Auth::user()->permissionsGroup->data_sections);
-                                $clr_ary = array("info", "danger", "success", "accent",);
-                                $ik = 0;
-                                $mnu_title_var = "title_" . @Helper::currentLanguage()->code;
-                                $mnu_title_var2 = "title_" . config('smartend.default_language');
-                                ?>
-                                @if(@Auth::user()->permissionsGroup->add_status)
-                                    @foreach($GeneralWebmasterSections as $headerWebmasterSection)
-                                        @if(in_array($headerWebmasterSection->id,$data_sections_arr))
-                                            <?php
-                                            if ($headerWebmasterSection->$mnu_title_var != "") {
-                                                $GeneralWebmasterSectionTitle = $headerWebmasterSection->$mnu_title_var;
-                                            } else {
-                                                $GeneralWebmasterSectionTitle = $headerWebmasterSection->$mnu_title_var2;
-                                            }
-                                            $LiIcon = "&#xe2c8;";
-                                            if ($headerWebmasterSection->type == 3) {
-                                                $LiIcon = "&#xe050;";
-                                            }
-                                            if ($headerWebmasterSection->type == 2) {
-                                                $LiIcon = "&#xe63a;";
-                                            }
-                                            if ($headerWebmasterSection->type == 1) {
-                                                $LiIcon = "&#xe251;";
-                                            }
-                                            if ($headerWebmasterSection->type == 0) {
-                                                $LiIcon = "&#xe2c8;";
-                                            }
-                                            if ($headerWebmasterSection->id == 1) {
-                                                $LiIcon = "&#xe3e8;";
-                                            }
-                                            if ($headerWebmasterSection->id == 7) {
-                                                $LiIcon = "&#xe02f;";
-                                            }
-                                            if ($headerWebmasterSection->id == 2) {
-                                                $LiIcon = "&#xe540;";
-                                            }
-                                            if ($headerWebmasterSection->id == 3) {
-                                                $LiIcon = "&#xe307;";
-                                            }
-                                            if ($headerWebmasterSection->id == 8) {
-                                                $LiIcon = "&#xe8f6;";
-                                            }
-
-                                            ?>
-                                            <a class="dropdown-item"
-                                               href="{{route("topicsCreate",$headerWebmasterSection->id)}}"><span><i
-                                                        class="material-icons">{!! $LiIcon !!}</i> &nbsp;{!! $GeneralWebmasterSectionTitle !!}</span></a>
-                                        @endif
-                                    @endforeach
-
-                                    @if(@Auth::user()->permissionsGroup->banners_status)
-                                        <a class="dropdown-item" href="{{route("Banners")}}"><i class="material-icons">
-                                                &#xe433;</i>
-                                            &nbsp;{{ __('backend.adsBanners') }}</a>
-                                    @endif
-                                    <div class="dropdown-divider"></div>
-
-                                    @if(Helper::GeneralWebmasterSettings("newsletter_status"))
-                                        @if(@Auth::user()->permissionsGroup->newsletter_status)
-                                            <a class="dropdown-item" href="{{route("contacts")}}"><i
-                                                    class="material-icons">
-                                                    &#xe7ef;</i>
-                                                &nbsp;{{ __('backend.newContacts') }}</a>
-                                        @endif
-                                    @endif
-                                @endif
-                                @if(Helper::GeneralWebmasterSettings("inbox_status"))
-                                    @if(@Auth::user()->permissionsGroup->inbox_status)
-                                        <a class="dropdown-item"
-                                           href="{{ route("webmails",["group_id"=>"create"]) }}"><i
-                                                class="material-icons">&#xe0be;</i> &nbsp;{{ __('backend.compose') }}
-                                        </a>
-                                    @endif
-                                @endif
-
-                            </div>
-                        </li>
-                    </ul>
-                @endif
-            @else
+            @if(@Auth::user()->permissionsGroup->add_status)
+                <?php
+                $data_sections_arr = explode(",", (string)Auth::user()->permissionsGroup->data_sections);
+                ?>
                 <ul class="nav navbar-nav">
-                    <li class="nav-item">
-                        <!-- <div class="pa-13">
-                            <strong class="inline-block text-danger">{{ __('backend.unlicensed') }}</strong> &nbsp;
-                            <a href="{{ route("webmasterSettings") }}?tab=license"
-                               class="btn btn danger">{{ __('backend.licenseNow') }}</a>
-                        </div> -->
+                    <li class="nav-item dropdown pa-13">
+                        <a class="btn light" data-toggle="dropdown">
+                            <i class="material-icons">&#xe145;</i>
+                            <span>{{ __('backend.new') }} </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-scale">
+                            <a class="dropdown-item" href="{{ route('sponsorsCreate', 'home') }}">
+                                <i class="material-icons">&#xe838;</i> &nbsp;Homepage Sponsor
+                            </a>
+                            <a class="dropdown-item" href="{{ route('sponsorsCreate', 'event') }}">
+                                <i class="material-icons">&#xe878;</i> &nbsp;Event Sponsor
+                            </a>
+                            <a class="dropdown-item" href="{{ route('sponsorCategories') }}">
+                                <i class="material-icons">&#xe2c7;</i> &nbsp;Sponsor Category
+                            </a>
+                            @if(in_array(23, config('profx.admin_sections', [])) && in_array(23, $data_sections_arr))
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('topicsCreate', 23) }}">
+                                    <i class="material-icons">&#xe413;</i> &nbsp;Gallery Item
+                                </a>
+                            @endif
+                        </div>
                     </li>
                 </ul>
             @endif

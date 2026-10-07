@@ -16,6 +16,8 @@ use Redirect;
 
 class NominationController extends Controller
 {
+    use DashboardView;
+
 //   public function store(Request $request)
 // {
 //     // Validate inputs
@@ -91,4 +93,69 @@ public function store(Request $request)
             ->with('error', 'An error occurred: ' . $e->getMessage());
     }
 }
+
+    // ---------------- Admin ----------------
+
+    public function index(Request $request)
+    {
+        $Nominations = $this->filtered($request)->orderBy('id', 'desc')
+            ->paginate(config('smartend.backend_pagination'))->withQueryString();
+        $Categories = Nomination::whereNotNull('category')->where('category', '!=', '')
+            ->distinct()->orderBy('category')->pluck('category');
+
+        return $this->dashboardView("dashboard.nominations.list", compact("Nominations", "Categories"));
+    }
+
+    public function show($id)
+    {
+        $Nomination = Nomination::findOrFail($id);
+
+        return $this->dashboardView("dashboard.nominations.view", compact("Nomination"));
+    }
+
+    public function destroy($id)
+    {
+        if (!@Auth::user()->permissionsGroup->delete_status) {
+            return Redirect::to(route('NoPermission'))->send();
+        }
+        Nomination::findOrFail($id)->delete();
+
+        return redirect()->route('nominations.index')->with('doneMessage', __('backend.deleteDone'));
+    }
+
+    public function export(Request $request)
+    {
+        $Nominations = $this->filtered($request)->orderBy('id', 'desc')->get();
+        $columns = ['id', 'company', 'contact', 'jobtitle', 'email', 'phone', 'website', 'country', 'category',
+            'subcategory', 'description', 'statement', 'consent1', 'consent2', 'created_at'];
+
+        return response()->streamDownload(function () use ($Nominations, $columns) {
+            $out = fopen('php://output', 'w');
+            fputcsv($out, $columns);
+            foreach ($Nominations as $Nomination) {
+                fputcsv($out, array_map(fn($c) => (string)$Nomination->$c, $columns));
+            }
+            fclose($out);
+        }, 'nominations-' . date('Y-m-d') . '.csv', ['Content-Type' => 'text/csv']);
+    }
+
+    private function filtered(Request $request)
+    {
+        $query = Nomination::query();
+        if ($request->q != "") {
+            $q = $request->q;
+            $query->where(function ($w) use ($q) {
+                $w->where('company', 'like', "%$q%")
+                    ->orWhere('contact', 'like', "%$q%")
+                    ->orWhere('email', 'like', "%$q%")
+                    ->orWhere('phone', 'like', "%$q%")
+                    ->orWhere('country', 'like', "%$q%");
+            });
+        }
+        if ($request->category != "") {
+            $query->where('category', $request->category);
+        }
+
+        return $query;
+    }
 }

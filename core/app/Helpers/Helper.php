@@ -37,7 +37,7 @@ class Helper
 
     static function awardEventDate(): string
     {
-        return '11th December ' . Helper::awardYear();
+        return '10th & 11th December ' . Helper::awardYear();
     }
 
     static function awardEventDateTime(): string

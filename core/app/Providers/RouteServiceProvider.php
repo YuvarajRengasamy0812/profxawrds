@@ -97,7 +97,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapDashboardRoutes()
     {
         Route::prefix(config('smartend.backend_path'))
-            ->middleware('auth')
+            ->middleware(['auth', \App\Http\Middleware\BlockUnusedAdmin::class])
             ->namespace($this->dashboardNamespace)
             ->group(base_path('routes/dashboard.php'));
     }

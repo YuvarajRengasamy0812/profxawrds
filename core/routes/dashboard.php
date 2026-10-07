@@ -19,6 +19,8 @@ use App\Http\Controllers\Dashboard\FileManagerController;
 use App\Http\Controllers\Dashboard\TagController;
 use App\Http\Controllers\Dashboard\PopupController;
 use App\Http\Controllers\Dashboard\NominationController;
+use App\Http\Controllers\Dashboard\SponsorsController;
+use App\Http\Controllers\Dashboard\SubscribersController;
 use Illuminate\Support\Facades\Route;
 
 // Admin Home
@@ -101,7 +103,28 @@ Route::get('/{webmasterId}/categories/destroy/{id?}', [CategoriesController::cla
 Route::post('/{webmasterId}/categories/updateAll', [CategoriesController::class, 'updateAll'])->name('categoriesUpdateAll');
 
 
-Route::get('nominations', [NominationController::class,'index'])->name('nominations.index');
+// Nominations (submitted from the frontend nomination form)
+Route::get('/nominations', [NominationController::class, 'index'])->name('nominations.index');
+Route::get('/nominations/export', [NominationController::class, 'export'])->name('nominations.export');
+Route::get('/nominations/{id}/view', [NominationController::class, 'show'])->name('nominations.show');
+Route::get('/nominations/{id}/destroy', [NominationController::class, 'destroy'])->name('nominations.destroy');
+
+// Newsletter subscribers
+Route::get('/subscribers', [SubscribersController::class, 'index'])->name('subscribers');
+Route::get('/subscribers/export', [SubscribersController::class, 'export'])->name('subscribersExport');
+Route::get('/subscribers/{id}/destroy', [SubscribersController::class, 'destroy'])->name('subscribersDestroy');
+
+// Sponsors
+Route::get('/sponsor-categories', [SponsorsController::class, 'categories'])->name('sponsorCategories');
+Route::post('/sponsor-categories/store', [SponsorsController::class, 'categoryStore'])->name('sponsorCategoriesStore');
+Route::post('/sponsor-categories/{id}/update', [SponsorsController::class, 'categoryUpdate'])->name('sponsorCategoriesUpdate');
+Route::get('/sponsor-categories/{id}/destroy', [SponsorsController::class, 'categoryDestroy'])->name('sponsorCategoriesDestroy');
+Route::get('/sponsors/edit/{id}', [SponsorsController::class, 'edit'])->name('sponsorsEdit');
+Route::post('/sponsors/update/{id}', [SponsorsController::class, 'update'])->name('sponsorsUpdate');
+Route::get('/sponsors/destroy/{id}', [SponsorsController::class, 'destroy'])->name('sponsorsDestroy');
+Route::get('/sponsors/{type}/create', [SponsorsController::class, 'create'])->name('sponsorsCreate')->where('type', 'home|event');
+Route::post('/sponsors/{type}/store', [SponsorsController::class, 'store'])->name('sponsorsStore')->where('type', 'home|event');
+Route::get('/sponsors/{type?}', [SponsorsController::class, 'index'])->name('sponsors')->where('type', 'home|event');
 
 // Topics
 Route::get('/{webmasterId}/topics', [TopicsController::class, 'index'])->name('topics');

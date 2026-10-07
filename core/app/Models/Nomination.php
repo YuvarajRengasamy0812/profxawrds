@@ -26,6 +26,7 @@ class Nomination extends Model
         'statement',
         'category',
         'subcategory',
+        'website',
        
         'consent1',
         'consent2',
