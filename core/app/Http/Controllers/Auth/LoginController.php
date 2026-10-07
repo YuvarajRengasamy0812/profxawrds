@@ -27,7 +27,10 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected function redirectTo()
+    {
+        return '/' . config('smartend.backend_path');
+    }
 
     /**
      * Create a new controller instance.
