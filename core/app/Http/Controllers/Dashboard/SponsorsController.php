@@ -20,6 +20,17 @@ class SponsorsController extends Controller
     // Sponsor types: home = homepage sponsors section, event = /event page
     private $types = ['home', 'event'];
 
+    // Runs before every action: make sure the sponsor tables exist (auto-created on first use)
+    public function callAction($method, $parameters)
+    {
+        if (!Sponsor::ready()) {
+            return redirect()->route('adminHome')
+                ->with('errorMessage', 'Sponsor tables could not be created. Import core/database/sql/sponsors.sql in phpMyAdmin.');
+        }
+
+        return parent::callAction($method, $parameters);
+    }
+
     private function checkPermission($permission)
     {
         if (!@Auth::user()->permissionsGroup->$permission) {

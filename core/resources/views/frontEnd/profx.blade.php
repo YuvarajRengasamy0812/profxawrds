@@ -468,7 +468,7 @@
             </style>
 
             @php
-                $sponsorCategories = \App\Models\SponsorCategory::where('status', 1)
+                $sponsorCategories = !\App\Models\Sponsor::ready() ? collect() : \App\Models\SponsorCategory::where('status', 1)
                     ->with('activeSponsors')->orderBy('row_no')->orderBy('id')->get()
                     ->filter(fn($category) => $category->activeSponsors->count() > 0);
             @endphp

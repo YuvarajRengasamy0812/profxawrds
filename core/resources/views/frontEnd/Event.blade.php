@@ -17,7 +17,7 @@
         <style>.event-sponsor-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:30px 40px;}</style>
 
         @php
-            $partners = \App\Models\Sponsor::where('type', 'event')->where('status', 1)
+            $partners = !\App\Models\Sponsor::ready() ? collect() : \App\Models\Sponsor::where('type', 'event')->where('status', 1)
                 ->orderBy('row_no')->orderBy('id')->get();
         @endphp
 

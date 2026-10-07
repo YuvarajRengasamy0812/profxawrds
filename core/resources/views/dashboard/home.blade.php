@@ -3,11 +3,12 @@
 @section('content')
     <?php
     $newsletterGroup = Helper::GeneralWebmasterSettings("newsletter_contacts_group");
+    $sponsorsReady = \App\Models\Sponsor::ready();
     $stats = [
         ['label' => 'Nominations', 'count' => \App\Models\Nomination::count(), 'icon' => '&#xe8d2;', 'color' => 'warn', 'route' => route('nominations.index')],
         ['label' => 'Subscribers', 'count' => \App\Models\Contact::where('group_id', $newsletterGroup)->count(), 'icon' => '&#xe0be;', 'color' => 'info', 'route' => route('subscribers')],
-        ['label' => 'Homepage Sponsors', 'count' => \App\Models\Sponsor::where('type', 'home')->where('status', 1)->count(), 'icon' => '&#xe838;', 'color' => 'success', 'route' => route('sponsors', 'home')],
-        ['label' => 'Event Sponsors', 'count' => \App\Models\Sponsor::where('type', 'event')->where('status', 1)->count(), 'icon' => '&#xe878;', 'color' => 'accent', 'route' => route('sponsors', 'event')],
+        ['label' => 'Homepage Sponsors', 'count' => !$sponsorsReady ? 0 : \App\Models\Sponsor::where('type', 'home')->where('status', 1)->count(), 'icon' => '&#xe838;', 'color' => 'success', 'route' => route('sponsors', 'home')],
+        ['label' => 'Event Sponsors', 'count' => !$sponsorsReady ? 0 : \App\Models\Sponsor::where('type', 'event')->where('status', 1)->count(), 'icon' => '&#xe878;', 'color' => 'accent', 'route' => route('sponsors', 'event')],
     ];
     $latestNominations = \App\Models\Nomination::orderBy('id', 'desc')->limit(6)->get();
     $latestSubscribers = \App\Models\Contact::where('group_id', $newsletterGroup)->orderBy('id', 'desc')->limit(6)->get();
